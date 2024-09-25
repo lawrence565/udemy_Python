@@ -1,11 +1,15 @@
 import smtplib
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 smtp_obj = smtplib.SMTP("smtp.gmail.com", 587)
 smtp_obj.ehlo()
 smtp_obj.starttls()
 
 email = "lawrence891106@gmail.com"
-password = ""
+password = os.getenv("GMAIL_APP_PASSWORD")
 # getpass.getpass("Enter your password: ") 可以在 Terminal 安全的獲取密碼
 print(smtp_obj.login(email, password))
 
